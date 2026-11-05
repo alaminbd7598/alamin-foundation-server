@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-serif: 'Outfit', 'Fraunces', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif-display {
+    font-family: var(--font-serif);
+    letter-spacing: -0.025em;
+  }
+
+  .font-mono-tabular {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes floatOrbSlow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(26px, -22px, 30px) scale(1.07);
+  }
+}
+
+@keyframes floatOrbReverse {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-24px, 20px, 25px) scale(1.06);
+  }
+}
+
+@keyframes floatActivityA {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(14px, -18px, 12px) rotate(2deg);
+  }
+}
+
+@keyframes floatActivityB {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-16px, -14px, 16px) rotate(-2deg);
+  }
+}
+
+@keyframes floatActivityC {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(10px, 16px, 8px) scale(1.04);
+  }
+}
+
+@keyframes tickerSlide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* 3D Perspective & Interactive Card Elevation */
+.perspective-container {
+  perspective: 1400px;
+}
+
+.card-3d-tilt {
+  transform-style: preserve-3d;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
+}
+
+.card-3d-tilt:hover {
+  transform: translateY(-7px) rotateX(2deg) rotateY(-1.5deg);
+  box-shadow:
+    0 24px 48px -12px rgba(168, 85, 247, 0.22),
+    0 10px 20px -8px rgba(15, 23, 42, 0.1);
+}
+
+.dark .card-3d-tilt:hover {
+  box-shadow:
+    0 24px 52px -12px rgba(192, 38, 211, 0.32),
+    0 10px 24px -8px rgba(245, 158, 11, 0.14);
+}
+
+/* Signature Al Amin Royal Fuchsia-Purple Gradient Button */
+.btn-luxury-primary {
+  background-image: linear-gradient(135deg, #7e22ce 0%, #c026d3 52%, #db2777 100%);
+  background-size: 200% 200%;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow:
+    0 10px 26px -6px rgba(192, 38, 211, 0.55),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.32);
+}
+
+.btn-luxury-primary:hover {
+  background-position: 100% 50%;
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 34px -6px rgba(217, 70, 239, 0.68),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.45);
+}
+
+.btn-luxury-primary:active {
+  transform: translateY(0);
+}
+
+/* Signature Orchid-Pink to Warm Gold Text Gradient */
+.text-royal-gradient {
+  background: linear-gradient(90deg, #e879f9 0%, #c084fc 45%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ambient-orb-1 {
+  animation: floatOrbSlow 13s ease-in-out infinite;
+}
+
+.ambient-orb-2 {
+  animation: floatOrbReverse 16s ease-in-out infinite;
+}
+
+.float-activity-a {
+  animation: floatActivityA 8s ease-in-out infinite;
+}
+
+.float-activity-b {
+  animation: floatActivityB 10s ease-in-out infinite;
+}
+
+.float-activity-c {
+  animation: floatActivityC 9s ease-in-out infinite;
+}
+
+.activity-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: tickerSlide 38s linear infinite;
+}
+
+.ambient-grid-pattern {
+  background-size: 44px 44px;
+  background-image: 
+    linear-gradient(to right, rgba(168, 85, 247, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(168, 85, 247, 0.06) 1px, transparent 1px);
+}
+
+.dark .ambient-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(192, 132, 252, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(192, 132, 252, 0.06) 1px, transparent 1px);
+}
